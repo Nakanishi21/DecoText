@@ -3,17 +3,17 @@ import { decoTextMap } from './decoTextMap';
 
 
 export function activate(context: vscode.ExtensionContext) {
-	let disposable = vscode.commands.registerCommand('decotext.galConvert', () => {
+	const disposable = vscode.commands.registerCommand('decotext.galConvert', () => {
 
-		let editor = vscode.window.activeTextEditor; // エディタ取得
+		const editor = vscode.window.activeTextEditor; // エディタ取得
 
 		if(editor === undefined) {
 			return;
 		}
 
-		let doc = editor.document;
-		let curSelection = editor.selection;
-		let text = doc.getText(curSelection);
+		const doc = editor.document;
+		const curSelection = editor.selection;
+		const text = doc.getText(curSelection);
 
 		// 選んだテキストをギャル文字にイメチェンするよ☆
 		const result = text.split('').map(char => decoTextMap[char] || char).join('');
